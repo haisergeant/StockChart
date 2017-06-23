@@ -16,6 +16,7 @@
 		A694A7D51EFBF6C0008BF4CF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7D41EFBF6C0008BF4CF /* WelcomeViewController.swift */; };
 		A694A7D71EFBF6E6008BF4CF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7D61EFBF6E6008BF4CF /* BaseViewController.swift */; };
 		A694A7DD1EFC085D008BF4CF /* ReactiveCocoa+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7DC1EFC085D008BF4CF /* ReactiveCocoa+Utils.swift */; };
+		A6A469531EFD5842007DA66A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A469551EFD5842007DA66A /* Localizable.strings */; };
 		BBFA8F360B2494426BAA5372 /* Pods_StockChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0298C9392C85B10B77A67961 /* Pods_StockChart.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A694A7D41EFBF6C0008BF4CF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A694A7D61EFBF6E6008BF4CF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A694A7DC1EFC085D008BF4CF /* ReactiveCocoa+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Utils.swift"; sourceTree = "<group>"; };
+		A6A469591EFD589F007DA66A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7DD05DAE7267B5ACFD778FD /* Pods-StockChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.debug.xcconfig"; sourceTree = "<group>"; };
 		E4239F36C4022599BA8C56F2 /* Pods-StockChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.release.xcconfig"; sourceTree = "<group>"; };
 		EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockChartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				A694A7B01EFBECF8008BF4CF /* Assets.xcassets */,
 				A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */,
 				A694A7B51EFBECF8008BF4CF /* Info.plist */,
+				A6A469551EFD5842007DA66A /* Localizable.strings */,
 				A694A7DB1EFC0836008BF4CF /* Extensions */,
 				A694A7D01EFBF689008BF4CF /* Scenes */,
 			);
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A694A7CE1EFBF0B4008BF4CF /* Podfile in Resources */,
+				A6A469531EFD5842007DA66A /* Localizable.strings in Resources */,
 				A694A7B41EFBECF8008BF4CF /* LaunchScreen.storyboard in Resources */,
 				A694A7B11EFBECF8008BF4CF /* Assets.xcassets in Resources */,
 			);
@@ -408,6 +412,14 @@
 				A694A7B31EFBECF8008BF4CF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A6A469551EFD5842007DA66A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A469591EFD589F007DA66A /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,13 +9,14 @@
 import UIKit
 import SnapKit
 import BonMot
+import Localize_Swift
 
 fileprivate let PaddingInnerX = 20
 fileprivate let PaddingInnerY = 8
 fileprivate let PaddingOuterY = 20
 fileprivate let ImageSize = 90
-fileprivate let TitleFontSize = 14
-fileprivate let DescriptionFontSize = 13
+fileprivate let TitleFontSize = CGFloat(14)
+fileprivate let DescriptionFontSize = CGFloat(13)
 fileprivate let ButtonHeight = 40
 
 class WelcomeViewController: BaseViewController {
@@ -25,12 +26,15 @@ class WelcomeViewController: BaseViewController {
     let buttonNext = UIButton()
     
     struct Copy {
-        // TODO: add text here
+        static let titleText = "WELCOME_SCREEN_TITLE".localized()
+        static let descriptionText = "WELCOME_SCREEN_DESCRIPTION".localized()
+        static let buttonTitle = "WELCOME_SCREEN_BUTTON_TITLE".localized()
     }
     
     struct Style {
         // TODO: add Style here
-
+        static let titleStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: TitleFontSize)))
+        static let descriptionStyle = StringStyle(.font(UIFont.systemFont(ofSize: DescriptionFontSize)))
     }
     
     init() {
@@ -49,21 +53,22 @@ class WelcomeViewController: BaseViewController {
         self.view.addSubview(self.buttonNext)
         
         self.labelTitle.numberOfLines = 0
-        // TODO: add localize here
-        self.labelTitle.text = "Stock APP"
+        self.labelTitle.text = Copy.titleText
         self.labelTitle.textAlignment = .center
         
         self.labelDescription.numberOfLines = 0
-        // TODO: add localize here
-        self.labelDescription.text = "Get real insights about the stocks you've invested in"
+        self.labelDescription.text = Copy.descriptionText
         self.labelDescription.textAlignment = .center
         
         self.imageViewLogo.image = UIImage(named: "Logo")
         
         self.buttonNext.layer.cornerRadius = CGFloat(ButtonHeight) * 0.5
-        self.buttonNext.setTitle("Next", for: .normal)
+        self.buttonNext.setTitle(Copy.buttonTitle, for: .normal)
         self.buttonNext.setTitleColor(.white, for: .normal)
         self.buttonNext.backgroundColor = .darkGray
+        
+        
+        
     }
     
     override func configureLayout() {
@@ -94,6 +99,8 @@ class WelcomeViewController: BaseViewController {
             make.height.equalTo(ButtonHeight)
         }
     }
+    
+    
     
     override func configureActions() {
         super.configureActions()

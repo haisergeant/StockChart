@@ -1,0 +1,11 @@
+/*
+  Localizable.strings
+  StockChart
+
+  Created by Le Thanh Hai on 6/24/17.
+  Copyright © 2017 haile. All rights reserved.
+*/
+
+"WELCOME_SCREEN_TITLE" = "Stock APP";
+"WELCOME_SCREEN_DESCRIPTION" = "Get real insights about the stocks you've invested in";
+"WELCOME_SCREEN_BUTTON_TITLE" = "Next";

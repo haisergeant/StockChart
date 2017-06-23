@@ -10,6 +10,21 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.initialize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func initialize() { }
+    
+    func shouldShowNavigationBar() -> Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -18,6 +33,11 @@ class BaseViewController: UIViewController {
         self.configureContent()
         self.configureStyle()
         self.configureActions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(!self.shouldShowNavigationBar(), animated: false)
     }
 
     override func didReceiveMemoryWarning() {

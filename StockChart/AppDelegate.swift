@@ -21,11 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Load Welcome screen
         let welcome = WelcomeViewController()
-        let navController = UINavigationController(rootViewController: welcome)
-        
-        // hide navigation bar
-        navController.setNavigationBarHidden(true, animated: false)
-        
+        let navController = UINavigationController(rootViewController: welcome)        
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
         

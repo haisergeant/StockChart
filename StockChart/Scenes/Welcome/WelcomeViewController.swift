@@ -20,6 +20,7 @@ fileprivate let DescriptionFontSize = CGFloat(13)
 fileprivate let ButtonHeight = 40
 
 class WelcomeViewController: BaseViewController {
+    var router: WelcomeRouterInput!
     let imageViewLogo = UIImageView()
     let labelTitle = UILabel()
     let labelDescription = UILabel()
@@ -37,12 +38,8 @@ class WelcomeViewController: BaseViewController {
         static let descriptionStyle = StringStyle(.font(UIFont.systemFont(ofSize: DescriptionFontSize)))
     }
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func initialize() {
+        self.router = WelcomeRouter(viewController: self)
     }
     
     override func configureSubviews() {
@@ -66,9 +63,6 @@ class WelcomeViewController: BaseViewController {
         self.buttonNext.setTitle(Copy.buttonTitle, for: .normal)
         self.buttonNext.setTitleColor(.white, for: .normal)
         self.buttonNext.backgroundColor = .darkGray
-        
-        
-        
     }
     
     override func configureLayout() {
@@ -79,7 +73,6 @@ class WelcomeViewController: BaseViewController {
             make.centerY.equalTo(self.view)
         }
         
-     
         self.labelTitle.snp.makeConstraints { [unowned self] (make) in
             make.bottom.equalTo(self.labelDescription.snp.top).offset(-PaddingInnerY)
             make.left.equalTo(self.labelDescription.snp.left)
@@ -100,13 +93,10 @@ class WelcomeViewController: BaseViewController {
         }
     }
     
-    
-    
     override func configureActions() {
         super.configureActions()
         self.buttonNext.action { [unowned self] _ in
-            
+            self.router.navigateNext()
         }
     }
-    
 }

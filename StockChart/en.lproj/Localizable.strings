@@ -9,3 +9,5 @@
 "WELCOME_SCREEN_TITLE" = "Stock APP";
 "WELCOME_SCREEN_DESCRIPTION" = "Get real insights about the stocks you've invested in";
 "WELCOME_SCREEN_BUTTON_TITLE" = "Next";
+
+"STOCK_LIST_PAGE_TITLE" = "Select a stock";

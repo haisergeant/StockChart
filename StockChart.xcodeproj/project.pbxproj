@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1D83C3274BA06FA5C10065A3 /* Pods_StockChartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */; };
+		A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */; };
+		A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED51EFE90B4000A902F /* StockListInteractor.swift */; };
+		A6755EDC1EFE90B4000A902F /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED61EFE90B4000A902F /* StockListModels.swift */; };
+		A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED71EFE90B4000A902F /* StockListPresenter.swift */; };
+		A6755EDE1EFE90B4000A902F /* StockListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED81EFE90B4000A902F /* StockListRouter.swift */; };
+		A6755EE71EFE9195000A902F /* StockChartConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE01EFE9195000A902F /* StockChartConfigurator.swift */; };
+		A6755EE81EFE9195000A902F /* StockChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE11EFE9195000A902F /* StockChartInteractor.swift */; };
+		A6755EE91EFE9195000A902F /* StockChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE21EFE9195000A902F /* StockChartModels.swift */; };
+		A6755EEA1EFE9195000A902F /* StockChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE31EFE9195000A902F /* StockChartPresenter.swift */; };
+		A6755EEB1EFE9195000A902F /* StockChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE41EFE9195000A902F /* StockChartRouter.swift */; };
+		A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE51EFE9195000A902F /* StockChartViewController.swift */; };
 		A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */; };
 		A694A7B11EFBECF8008BF4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B01EFBECF8008BF4CF /* Assets.xcassets */; };
 		A694A7B41EFBECF8008BF4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */; };
@@ -36,6 +47,17 @@
 		0298C9392C85B10B77A67961 /* Pods_StockChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73090625AB0278AB9ECAC9AC /* Pods-StockChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0A3D5452804CC6EE101F28F /* Pods-StockChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListConfigurator.swift; sourceTree = "<group>"; };
+		A6755ED51EFE90B4000A902F /* StockListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListInteractor.swift; sourceTree = "<group>"; };
+		A6755ED61EFE90B4000A902F /* StockListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListModels.swift; sourceTree = "<group>"; };
+		A6755ED71EFE90B4000A902F /* StockListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListPresenter.swift; sourceTree = "<group>"; };
+		A6755ED81EFE90B4000A902F /* StockListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListRouter.swift; sourceTree = "<group>"; };
+		A6755EE01EFE9195000A902F /* StockChartConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartConfigurator.swift; sourceTree = "<group>"; };
+		A6755EE11EFE9195000A902F /* StockChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartInteractor.swift; sourceTree = "<group>"; };
+		A6755EE21EFE9195000A902F /* StockChartModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartModels.swift; sourceTree = "<group>"; };
+		A6755EE31EFE9195000A902F /* StockChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartPresenter.swift; sourceTree = "<group>"; };
+		A6755EE41EFE9195000A902F /* StockChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartRouter.swift; sourceTree = "<group>"; };
+		A6755EE51EFE9195000A902F /* StockChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
 		A694A7A61EFBECF8008BF4CF /* StockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A694A7B01EFBECF8008BF4CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +66,7 @@
 		A694A7BA1EFBECF8008BF4CF /* StockChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A694A7BE1EFBECF8008BF4CF /* StockChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartTests.swift; sourceTree = "<group>"; };
 		A694A7C01EFBECF8008BF4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A694A7CD1EFBF0B4008BF4CF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A694A7CD1EFBF0B4008BF4CF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A694A7D41EFBF6C0008BF4CF /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A694A7D61EFBF6E6008BF4CF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A694A7DC1EFC085D008BF4CF /* ReactiveCocoa+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Utils.swift"; sourceTree = "<group>"; };
@@ -96,6 +118,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A6755EEE1EFE96D6000A902F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A6755EEF1EFE96D6000A902F /* Repository */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A6755EEF1EFE96D6000A902F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		A694A79D1EFBECF8008BF4CF = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +162,7 @@
 				A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */,
 				A694A7B51EFBECF8008BF4CF /* Info.plist */,
 				A6A469551EFD5842007DA66A /* Localizable.strings */,
+				A6755EEE1EFE96D6000A902F /* Services */,
 				A694A7DB1EFC0836008BF4CF /* Extensions */,
 				A694A7D01EFBF689008BF4CF /* Scenes */,
 			);
@@ -154,6 +192,12 @@
 		A694A7D11EFBF689008BF4CF /* StockChart */ = {
 			isa = PBXGroup;
 			children = (
+				A6755EE01EFE9195000A902F /* StockChartConfigurator.swift */,
+				A6755EE11EFE9195000A902F /* StockChartInteractor.swift */,
+				A6755EE21EFE9195000A902F /* StockChartModels.swift */,
+				A6755EE31EFE9195000A902F /* StockChartPresenter.swift */,
+				A6755EE41EFE9195000A902F /* StockChartRouter.swift */,
+				A6755EE51EFE9195000A902F /* StockChartViewController.swift */,
 			);
 			path = StockChart;
 			sourceTree = "<group>";
@@ -161,6 +205,11 @@
 		A694A7D21EFBF689008BF4CF /* StockList */ = {
 			isa = PBXGroup;
 			children = (
+				A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */,
+				A6755ED51EFE90B4000A902F /* StockListInteractor.swift */,
+				A6755ED61EFE90B4000A902F /* StockListModels.swift */,
+				A6755ED71EFE90B4000A902F /* StockListPresenter.swift */,
+				A6755ED81EFE90B4000A902F /* StockListRouter.swift */,
 				A6A4695A1EFD5FEF007DA66A /* StockListViewController.swift */,
 			);
 			path = StockList;
@@ -389,9 +438,20 @@
 				A694A7DD1EFC085D008BF4CF /* ReactiveCocoa+Utils.swift in Sources */,
 				A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */,
 				A694A7D51EFBF6C0008BF4CF /* WelcomeViewController.swift in Sources */,
+				A6755EE81EFE9195000A902F /* StockChartInteractor.swift in Sources */,
+				A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */,
+				A6755EE91EFE9195000A902F /* StockChartModels.swift in Sources */,
 				A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */,
+				A6755EDE1EFE90B4000A902F /* StockListRouter.swift in Sources */,
+				A6755EEB1EFE9195000A902F /* StockChartRouter.swift in Sources */,
+				A6755EEA1EFE9195000A902F /* StockChartPresenter.swift in Sources */,
 				A694A7D71EFBF6E6008BF4CF /* BaseViewController.swift in Sources */,
+				A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */,
+				A6755EDC1EFE90B4000A902F /* StockListModels.swift in Sources */,
+				A6755EE71EFE9195000A902F /* StockChartConfigurator.swift in Sources */,
 				A6A4695B1EFD5FEF007DA66A /* StockListViewController.swift in Sources */,
+				A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */,
+				A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

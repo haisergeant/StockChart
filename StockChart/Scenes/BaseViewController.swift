@@ -20,6 +20,7 @@ class BaseViewController: UIViewController {
     }
     
     func initialize() { }
+    func navigationTitle() -> String { return "" }
     
     func shouldShowNavigationBar() -> Bool {
         return false
@@ -27,6 +28,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = self.navigationTitle()
         self.view.backgroundColor = .white
         self.configureSubviews()
         self.configureLayout()

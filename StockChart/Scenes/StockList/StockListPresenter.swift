@@ -12,13 +12,26 @@
 import UIKit
 
 protocol StockListPresenterInput {
+    func present(response: StockListResponse)
 }
 
 protocol StockListPresenterOutput: class {
+    func display(viewModel: StockListViewModel)
 }
 
 class StockListPresenter: StockListPresenterInput {
     weak var output: StockListPresenterOutput!
     
     // MARK: - Presentation logic
+    func present(response: StockListResponse) {
+     
+        var modelList = [StockViewModel]()
+        for item in response.stockList {
+            modelList.append(StockViewModel(labelTitle: item.symbol,
+                                            changeText: item.valueChange,
+                                            priceText: String(item.askPrice)))
+        }
+        
+        self.output.display(viewModel: StockListViewModel(modelList: modelList))
+    }
 }

@@ -19,6 +19,9 @@
 		A6755EEA1EFE9195000A902F /* StockChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE31EFE9195000A902F /* StockChartPresenter.swift */; };
 		A6755EEB1EFE9195000A902F /* StockChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE41EFE9195000A902F /* StockChartRouter.swift */; };
 		A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE51EFE9195000A902F /* StockChartViewController.swift */; };
+		A6755EF11EFF0B60000A902F /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF01EFF0B60000A902F /* Repository.swift */; };
+		A6755EF31EFF0B83000A902F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF21EFF0B83000A902F /* ServerRepository.swift */; };
+		A6755EF51EFF1069000A902F /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF41EFF1069000A902F /* Stock.swift */; };
 		A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */; };
 		A694A7B11EFBECF8008BF4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B01EFBECF8008BF4CF /* Assets.xcassets */; };
 		A694A7B41EFBECF8008BF4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */; };
@@ -58,6 +61,9 @@
 		A6755EE31EFE9195000A902F /* StockChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartPresenter.swift; sourceTree = "<group>"; };
 		A6755EE41EFE9195000A902F /* StockChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartRouter.swift; sourceTree = "<group>"; };
 		A6755EE51EFE9195000A902F /* StockChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
+		A6755EF01EFF0B60000A902F /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		A6755EF21EFF0B83000A902F /* ServerRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		A6755EF41EFF1069000A902F /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		A694A7A61EFBECF8008BF4CF /* StockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A694A7B01EFBECF8008BF4CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 		A6755EEF1EFE96D6000A902F /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				A6755EF01EFF0B60000A902F /* Repository.swift */,
+				A6755EF21EFF0B83000A902F /* ServerRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 				A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */,
 				A694A7B51EFBECF8008BF4CF /* Info.plist */,
 				A6A469551EFD5842007DA66A /* Localizable.strings */,
+				A6755EF41EFF1069000A902F /* Stock.swift */,
 				A6755EEE1EFE96D6000A902F /* Services */,
 				A694A7DB1EFC0836008BF4CF /* Extensions */,
 				A694A7D01EFBF689008BF4CF /* Scenes */,
@@ -439,6 +448,7 @@
 				A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */,
 				A694A7D51EFBF6C0008BF4CF /* WelcomeViewController.swift in Sources */,
 				A6755EE81EFE9195000A902F /* StockChartInteractor.swift in Sources */,
+				A6755EF31EFF0B83000A902F /* ServerRepository.swift in Sources */,
 				A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */,
 				A6755EE91EFE9195000A902F /* StockChartModels.swift in Sources */,
 				A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */,
@@ -452,6 +462,8 @@
 				A6A4695B1EFD5FEF007DA66A /* StockListViewController.swift in Sources */,
 				A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */,
 				A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */,
+				A6755EF51EFF1069000A902F /* Stock.swift in Sources */,
+				A6755EF11EFF0B60000A902F /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

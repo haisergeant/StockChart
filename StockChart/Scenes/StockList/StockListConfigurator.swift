@@ -35,6 +35,7 @@ class StockListConfigurator {
         presenter.output = viewController
         
         let interactor = StockListInteractor()
+        interactor.repository = ServerRepository.instance
         interactor.output = presenter
         
         viewController.output = interactor

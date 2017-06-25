@@ -12,12 +12,26 @@
 import UIKit
 
 protocol StockListInteractorInput {
+    func load(request: StockListRequest)
 }
 
 protocol StockListInteractorOutput {
+    func present(response: StockListResponse)
 }
 
 class StockListInteractor: StockListInteractorInput {
+    var repository: Repository!
+    
     var output: StockListInteractorOutput!
     // MARK: - Business logic
+    func load(request: StockListRequest) {
+        self.repository.requestStockList(arr: request.symbolList)
+        .startWithResult { [unowned self] result in
+            if let value = result.value {
+                self.output.present(response: StockListResponse(stockList: value))
+            } else {
+                // Error
+            }            
+        }
+    }
 }

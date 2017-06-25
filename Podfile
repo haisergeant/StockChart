@@ -10,6 +10,7 @@ target 'StockChart' do
     pod 'BonMot'
     pod 'Localize-Swift'
     pod 'Alamofire'
+    pod 'ReactiveCocoa'
     
     # Pods for StockChart
     

@@ -10,3 +10,76 @@
 //
 
 import UIKit
+import BonMot
+
+fileprivate let PaddingInnerX = CGFloat(20)
+fileprivate let PaddingInnerY = CGFloat(20)
+fileprivate let PaddingBetweenX = CGFloat(20)
+fileprivate let PaddingBetweenY = CGFloat(20)
+
+struct StockListRequest {
+    var symbolList: [String]
+}
+
+struct StockListResponse {
+    var stockList: [Stock]
+}
+
+class StockListViewModel {
+    var modelList: [StockViewModel]
+    
+    init(modelList: [StockViewModel]) {
+        self.modelList = modelList
+    }
+}
+
+class StockViewModel {
+    struct Style {
+        let symbolStyle: StringStyle
+        let priceStyle: StringStyle
+        let changeStyle: StringStyle
+        
+        init(symbolStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 14))),
+             priceStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13))),
+             changeStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13)))) {
+            self.symbolStyle = symbolStyle
+            self.priceStyle = priceStyle
+            self.changeStyle = changeStyle
+        }
+    }
+    
+    let labelTitle: String
+    let changeText: String
+    let priceText: String
+    let padding: Padding
+    let style: Style
+    
+    init(labelTitle: String,
+         changeText: String,
+         priceText: String,
+         padding: Padding = Padding(),
+         style: Style = Style()) {
+        self.labelTitle = labelTitle
+        self.changeText = changeText
+        self.priceText = priceText
+        self.padding = padding
+        self.style = style
+    }
+}
+
+struct Padding {
+    var paddingInnerX: CGFloat
+    var paddingInnerY: CGFloat
+    var paddingBetweenX: CGFloat
+    var paddingBetweenY: CGFloat
+    
+    init(paddingInnerX: CGFloat = PaddingInnerX,
+         paddingInnerY: CGFloat = PaddingInnerY,
+         paddingBetweenX: CGFloat = PaddingBetweenX,
+         paddingBetweenY: CGFloat = PaddingBetweenY) {
+        self.paddingInnerX = paddingInnerX
+        self.paddingInnerY = paddingInnerY
+        self.paddingBetweenX = paddingBetweenX
+        self.paddingBetweenY = paddingBetweenY
+    }
+}

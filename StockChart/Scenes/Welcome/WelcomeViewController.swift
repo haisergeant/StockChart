@@ -15,8 +15,8 @@ fileprivate let PaddingInnerX = 20
 fileprivate let PaddingInnerY = 8
 fileprivate let PaddingOuterY = 20
 fileprivate let ImageSize = 90
-fileprivate let TitleFontSize = CGFloat(14)
-fileprivate let DescriptionFontSize = CGFloat(13)
+fileprivate let TitleFontSize = CGFloat(17)
+fileprivate let DescriptionFontSize = CGFloat(14)
 fileprivate let ButtonHeight = 40
 
 class WelcomeViewController: BaseViewController {
@@ -50,11 +50,11 @@ class WelcomeViewController: BaseViewController {
         self.view.addSubview(self.buttonNext)
         
         self.labelTitle.numberOfLines = 0
-        self.labelTitle.text = Copy.titleText
+        self.labelTitle.attributedText = Copy.titleText.styled(with: Style.titleStyle)
         self.labelTitle.textAlignment = .center
         
         self.labelDescription.numberOfLines = 0
-        self.labelDescription.text = Copy.descriptionText
+        self.labelDescription.attributedText = Copy.descriptionText.styled(with: Style.descriptionStyle)
         self.labelDescription.textAlignment = .center
         
         self.imageViewLogo.image = UIImage(named: "Logo")

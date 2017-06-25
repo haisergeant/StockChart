@@ -10,16 +10,17 @@ import UIKit
 import SnapKit
 
 protocol StockListViewControllerInput {
-    
+    func display(viewModel: StockListViewModel)
 }
 
 protocol StockListViewControllerOutput {
-    
+    func load(request: StockListRequest)
 }
 
+fileprivate let STOCK_LIST = ["\"APPL\"", "\"GOOG\"", "\"YHOO\"", "\"DOW J\"", "\"FTSE 100\""]
 
 
-class StockListViewController: BaseViewController, StockListViewControllerInput {
+class StockListViewController: BaseViewController {
     let tableView = UITableView()
     
     var output: StockListViewControllerOutput!
@@ -57,6 +58,17 @@ class StockListViewController: BaseViewController, StockListViewControllerInput 
         self.tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.output.load(request: StockListRequest(symbolList: STOCK_LIST))
+    }
+}
+
+extension StockListViewController: StockListViewControllerInput {
+    func display(viewModel: StockListViewModel) {
+        
     }
 }
 

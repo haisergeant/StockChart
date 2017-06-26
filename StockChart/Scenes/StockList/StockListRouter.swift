@@ -18,6 +18,7 @@ protocol StockListRouterInput {
 class StockListRouter: StockListRouterInput {
     weak var viewController: StockListViewController!
     func navigateToGraph(stock: Stock) {
-        
+        let controller = StockChartViewController(stock: stock)
+        self.viewController.navigationController?.pushViewController(controller, animated: true)
     }
 }

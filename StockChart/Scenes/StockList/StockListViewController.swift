@@ -18,7 +18,7 @@ protocol StockListViewControllerOutput {
     func load(request: StockListRequest)
 }
 
-fileprivate let STOCK_LIST = ["\"APPL\"", "\"GOOG\"", "\"YHOO\"", "\"MSFT\""]
+fileprivate let STOCK_LIST = ["\"AAPL\"", "\"GOOG\"", "\"YHOO\"", "\"MSFT\""]
 
 
 class StockListViewController: BaseViewController {
@@ -112,7 +112,9 @@ extension StockListViewController: UITableViewDataSource {
 extension StockListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        
+        if let item = self.contents?[indexPath.row] as? Stock {
+            self.router.navigateToGraph(stock: item)
+        }
     }
 }
 

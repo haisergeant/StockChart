@@ -98,5 +98,9 @@ class WelcomeViewController: BaseViewController {
         self.buttonNext.action { [unowned self] _ in
             self.router.navigateNext()
         }
+        
+        // Animation for logo
+        self.imageViewLogo.layer.add(AnimationHelper.rotateAnimation(angle: 360.0, time: 10, repeating: true),
+                                     forKey: "rotate")
     }
 }

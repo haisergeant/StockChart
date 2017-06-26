@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D83C3274BA06FA5C10065A3 /* Pods_StockChartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */; };
 		A606A71E1F015B5A00E148AD /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606A71D1F015B5A00E148AD /* Stock.swift */; };
+		A606A75D1F0162D500E148AD /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606A75C1F0162D500E148AD /* AnimationHelper.swift */; };
 		A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */; };
 		A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED51EFE90B4000A902F /* StockListInteractor.swift */; };
 		A6755EDC1EFE90B4000A902F /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED61EFE90B4000A902F /* StockListModels.swift */; };
@@ -51,6 +52,7 @@
 		73090625AB0278AB9ECAC9AC /* Pods-StockChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0A3D5452804CC6EE101F28F /* Pods-StockChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A606A71D1F015B5A00E148AD /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		A606A75C1F0162D500E148AD /* AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 		A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListConfigurator.swift; sourceTree = "<group>"; };
 		A6755ED51EFE90B4000A902F /* StockListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListInteractor.swift; sourceTree = "<group>"; };
 		A6755ED61EFE90B4000A902F /* StockListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListModels.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		A606A75B1F015BF300E148AD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A606A75C1F0162D500E148AD /* AnimationHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */,
 				A6755EE91EFE9195000A902F /* StockChartModels.swift in Sources */,
 				A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */,
+				A606A75D1F0162D500E148AD /* AnimationHelper.swift in Sources */,
 				A6755EDE1EFE90B4000A902F /* StockListRouter.swift in Sources */,
 				A6755EEB1EFE9195000A902F /* StockChartRouter.swift in Sources */,
 				A6755EEA1EFE9195000A902F /* StockChartPresenter.swift in Sources */,

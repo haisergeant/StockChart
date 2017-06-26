@@ -17,6 +17,9 @@ fileprivate let PaddingInnerY = CGFloat(20)
 fileprivate let PaddingBetweenX = CGFloat(20)
 fileprivate let PaddingBetweenY = CGFloat(20)
 
+fileprivate let GreenColor = UIColor(red: 106.0 / 255.0, green: 187.0 / 255.0, blue: 97.0 / 255.0, alpha: 1.0)
+fileprivate let RedColor = UIColor(red: 185.0 / 255.0, green: 101.0 / 255.0, blue: 109.0 / 255.0, alpha: 1.0)
+
 struct StockListRequest {
     var symbolList: [String]
 }
@@ -40,30 +43,43 @@ class StockViewModel {
         let changeStyle: StringStyle
         
         init(symbolStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 14))),
-             priceStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13))),
-             changeStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13)))) {
+             priceStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13)),
+                                                   .alignment(.right)),
+             changeStyle: StringStyle = StringStyle(.font(UIFont.systemFont(ofSize: 13)),
+                                                    .alignment(.right))) {
             self.symbolStyle = symbolStyle
             self.priceStyle = priceStyle
             self.changeStyle = changeStyle
         }
     }
     
-    let labelTitle: String
-    let changeText: String
-    let priceText: String
+    let stock: Stock
+    var labelTitle: NSAttributedString
+    var changeText: NSAttributedString?
+    var priceText: NSAttributedString
     let padding: Padding
     let style: Style
     
-    init(labelTitle: String,
-         changeText: String,
-         priceText: String,
+    init(stock: Stock,
          padding: Padding = Padding(),
          style: Style = Style()) {
-        self.labelTitle = labelTitle
-        self.changeText = changeText
-        self.priceText = priceText
+        self.stock = stock
         self.padding = padding
         self.style = style
+        
+        self.labelTitle = self.stock.symbol.styled(with: self.style.symbolStyle)
+        
+        if let number = Double(self.stock.valueChange) {
+            var changeStyle = self.style.changeStyle
+            if number > 0 {
+                changeStyle = changeStyle.byAdding(.color(GreenColor))
+            } else {
+                changeStyle = changeStyle.byAdding(.color(RedColor))
+            }
+            self.changeText = self.stock.valueChange.styled(with: changeStyle)
+        }
+        
+        self.priceText = String(self.stock.askPrice).styled(with: self.style.priceStyle)
     }
 }
 

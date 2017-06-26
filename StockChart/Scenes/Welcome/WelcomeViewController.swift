@@ -67,25 +67,25 @@ class WelcomeViewController: BaseViewController {
     
     override func configureLayout() {
         super.configureLayout()
-        self.labelDescription.snp.makeConstraints { [unowned self] (make) in
+        self.labelDescription.snp.makeConstraints { [unowned self] make in
             make.left.equalTo(PaddingInnerX)
             make.right.equalTo(-PaddingInnerX)
             make.centerY.equalTo(self.view)
         }
         
-        self.labelTitle.snp.makeConstraints { [unowned self] (make) in
+        self.labelTitle.snp.makeConstraints { [unowned self] make in
             make.bottom.equalTo(self.labelDescription.snp.top).offset(-PaddingInnerY)
             make.left.equalTo(self.labelDescription.snp.left)
             make.right.equalTo(self.labelDescription.snp.right)
         }
         
-        self.imageViewLogo.snp.makeConstraints { [unowned self] (make) in
+        self.imageViewLogo.snp.makeConstraints { [unowned self] make in
             make.size.equalTo(ImageSize)
             make.bottom.equalTo(self.labelTitle.snp.top).offset(-PaddingInnerX)
             make.centerX.equalTo(self.view)
         }
         
-        self.buttonNext.snp.makeConstraints { (make) in
+        self.buttonNext.snp.makeConstraints { make in
             make.left.equalTo(PaddingInnerX)
             make.right.equalTo(-PaddingInnerX)
             make.bottom.equalTo(-PaddingOuterY)

@@ -60,6 +60,15 @@ class StockListViewController: BaseViewController {
         }
     }
     
+    override func configureContent() {
+        super.configureContent()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.output.load(request: StockListRequest(symbolList: STOCK_LIST))
@@ -68,7 +77,7 @@ class StockListViewController: BaseViewController {
 
 extension StockListViewController: StockListViewControllerInput {
     func display(viewModel: StockListViewModel) {
-        
+        self.contents = viewModel.modelList
     }
 }
 
@@ -86,7 +95,10 @@ extension StockListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let contents = self.contents, contents.count > 0 {
-            
+            let item = contents[indexPath.row]
+            let cell = StockViewCell()
+            cell.configure(model: item)
+            return cell
         }
         return UITableViewCell()
     }
@@ -95,6 +107,54 @@ extension StockListViewController: UITableViewDataSource {
 extension StockListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+class StockViewCell: UITableViewCell {
+    let labelSymbol = UILabel()
+    let labelPrice = UILabel()
+    let labelChange = UILabel()
+    
+    init() {
+        super.init(style: UITableViewCellStyle.default, reuseIdentifier: "StockViewCell")
+        self.configureSubviews()
+    }
+    
+    func configureSubviews() {
+        self.contentView.addSubview(self.labelSymbol)
+        self.contentView.addSubview(self.labelPrice)
+        self.contentView.addSubview(self.labelChange)
+    }
+    
+    func configure(model: AnyObject) {
+        if let model = model as? StockViewModel {
+            self.labelSymbol.attributedText = model.labelTitle
+            self.labelChange.attributedText = model.changeText
+            self.labelPrice.attributedText = model.priceText
+            
+            self.labelSymbol.snp.makeConstraints { [unowned self] make in
+                make.left.equalTo(model.padding.paddingInnerX)
+                make.top.equalTo(model.padding.paddingInnerY)
+                make.bottom.equalTo(-model.padding.paddingInnerY)
+                make.right.equalTo(self.labelPrice.snp.left).offset(-model.padding.paddingBetweenX)
+            }
+            
+            self.labelPrice.snp.makeConstraints { [unowned self] make in
+                make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
+                make.right.equalTo(self.labelChange.snp.left).offset(-model.padding.paddingBetweenX)
+            }
+            
+            self.labelChange.snp.makeConstraints { [unowned self] make in
+                make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
+                make.right.equalTo(-model.padding.paddingInnerX)
+                make.width.equalTo(50)
+            }
+            self.layoutSubviews()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

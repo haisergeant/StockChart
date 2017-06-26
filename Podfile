@@ -11,6 +11,7 @@ target 'StockChart' do
     pod 'Localize-Swift'
     pod 'Alamofire'
     pod 'ReactiveCocoa'
+    pod 'MBProgressHUD'
     
     # Pods for StockChart
     

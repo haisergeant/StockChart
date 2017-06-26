@@ -27,9 +27,7 @@ class StockListPresenter: StockListPresenterInput {
      
         var modelList = [StockViewModel]()
         for item in response.stockList {
-            modelList.append(StockViewModel(labelTitle: item.symbol,
-                                            changeText: item.valueChange,
-                                            priceText: String(item.askPrice)))
+            modelList.append(StockViewModel(stock: item))
         }
         
         self.output.display(viewModel: StockListViewModel(modelList: modelList))

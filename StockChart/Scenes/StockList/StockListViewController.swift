@@ -17,7 +17,7 @@ protocol StockListViewControllerOutput {
     func load(request: StockListRequest)
 }
 
-fileprivate let STOCK_LIST = ["\"APPL\"", "\"GOOG\"", "\"YHOO\"", "\"DOW J\"", "\"FTSE 100\""]
+fileprivate let STOCK_LIST = ["\"APPL\"", "\"GOOG\"", "\"YHOO\"", "\"MSFT\""]
 
 
 class StockListViewController: BaseViewController {
@@ -67,6 +67,8 @@ class StockListViewController: BaseViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        
+        self.tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,14 +108,18 @@ extension StockListViewController: UITableViewDataSource {
 
 extension StockListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
         
     }
 }
+
+fileprivate let SeparatorColor = UIColor(red: 220.0 / 255.0, green: 220.0 / 255.0, blue: 220.0 / 255.0, alpha: 1.0)
 
 class StockViewCell: UITableViewCell {
     let labelSymbol = UILabel()
     let labelPrice = UILabel()
     let labelChange = UILabel()
+    let separator = UIView()
     
     init() {
         super.init(style: UITableViewCellStyle.default, reuseIdentifier: "StockViewCell")
@@ -124,6 +130,7 @@ class StockViewCell: UITableViewCell {
         self.contentView.addSubview(self.labelSymbol)
         self.contentView.addSubview(self.labelPrice)
         self.contentView.addSubview(self.labelChange)
+        self.contentView.addSubview(self.separator)
     }
     
     func configure(model: AnyObject) {
@@ -131,6 +138,14 @@ class StockViewCell: UITableViewCell {
             self.labelSymbol.attributedText = model.labelTitle
             self.labelChange.attributedText = model.changeText
             self.labelPrice.attributedText = model.priceText
+            self.separator.backgroundColor = SeparatorColor
+            
+            self.separator.snp.makeConstraints { make in
+                make.left.equalTo(0)
+                make.right.equalTo(0)
+                make.bottom.equalTo(0)
+                make.height.equalTo(1)
+            }
             
             self.labelSymbol.snp.makeConstraints { [unowned self] make in
                 make.left.equalTo(model.padding.paddingInnerX)
@@ -149,6 +164,9 @@ class StockViewCell: UITableViewCell {
                 make.right.equalTo(-model.padding.paddingInnerX)
                 make.width.equalTo(50)
             }
+            
+            
+            
             self.layoutSubviews()
         }
     }

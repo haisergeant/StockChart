@@ -12,8 +12,12 @@
 import UIKit
 
 protocol StockListRouterInput {
+    func navigateToGraph(stock: Stock)
 }
 
 class StockListRouter: StockListRouterInput {
     weak var viewController: StockListViewController!
+    func navigateToGraph(stock: Stock) {
+        
+    }
 }

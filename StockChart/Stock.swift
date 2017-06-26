@@ -31,21 +31,21 @@ class Stock {
     }
     
     init(dictionary: [String: AnyObject]) {
-        if let value = dictionary["symbol"] as? String {
+        if let value = dictionary["Symbol"] as? String {
             self.symbol = value
         }
-        if let value = dictionary["Ask"] as? Float {
-            self.askPrice = value
+        if let value = dictionary["Bid"] as? String, let num = Float(value) {
+            self.askPrice = num
         }
         if let value = dictionary["Change"] as? String {
             self.valueChange = value
         }
         
-        if let value = dictionary["Open"] as? Float {
-            self.openValue = value
+        if let value = dictionary["Open"] as? String, let num = Float(value) {
+            self.openValue = num
         }
-        if let value = dictionary["DaysHigh"] as? Float {
-            self.highValue = value
+        if let value = dictionary["DaysHigh"] as? String, let num = Float(value) {
+            self.highValue = num
         }
         if let value = dictionary["DaysLow"] as? Float {
             self.lowValue = value

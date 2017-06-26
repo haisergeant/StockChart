@@ -23,6 +23,16 @@ class StockChartViewController: BaseViewController, StockChartViewControllerInpu
     var router: StockChartRouter!
     
     // MARK: - Object lifecycle
+    var stock: Stock
+    init(stock: Stock) {
+        self.stock = stock
+        super.init()        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func initialize() {
         StockChartConfigurator.sharedInstance.configure(viewController: self)
     }

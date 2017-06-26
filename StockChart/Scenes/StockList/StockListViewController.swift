@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 protocol StockListViewControllerInput {
     func display(viewModel: StockListViewModel)
@@ -73,12 +74,14 @@ class StockListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         self.output.load(request: StockListRequest(symbolList: STOCK_LIST))
     }
 }
 
 extension StockListViewController: StockListViewControllerInput {
     func display(viewModel: StockListViewModel) {
+        MBProgressHUD.hide(for: self.view, animated: true)
         self.contents = viewModel.modelList
     }
 }

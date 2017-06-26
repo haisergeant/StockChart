@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D83C3274BA06FA5C10065A3 /* Pods_StockChartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */; };
+		A606A71E1F015B5A00E148AD /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606A71D1F015B5A00E148AD /* Stock.swift */; };
 		A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */; };
 		A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED51EFE90B4000A902F /* StockListInteractor.swift */; };
 		A6755EDC1EFE90B4000A902F /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755ED61EFE90B4000A902F /* StockListModels.swift */; };
@@ -21,7 +22,6 @@
 		A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE51EFE9195000A902F /* StockChartViewController.swift */; };
 		A6755EF11EFF0B60000A902F /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF01EFF0B60000A902F /* Repository.swift */; };
 		A6755EF31EFF0B83000A902F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF21EFF0B83000A902F /* ServerRepository.swift */; };
-		A6755EF51EFF1069000A902F /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF41EFF1069000A902F /* Stock.swift */; };
 		A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */; };
 		A694A7B11EFBECF8008BF4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B01EFBECF8008BF4CF /* Assets.xcassets */; };
 		A694A7B41EFBECF8008BF4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */; };
@@ -50,6 +50,7 @@
 		0298C9392C85B10B77A67961 /* Pods_StockChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73090625AB0278AB9ECAC9AC /* Pods-StockChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0A3D5452804CC6EE101F28F /* Pods-StockChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChartTests/Pods-StockChartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A606A71D1F015B5A00E148AD /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		A6755ED41EFE90B4000A902F /* StockListConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListConfigurator.swift; sourceTree = "<group>"; };
 		A6755ED51EFE90B4000A902F /* StockListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListInteractor.swift; sourceTree = "<group>"; };
 		A6755ED61EFE90B4000A902F /* StockListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListModels.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		A6755EE51EFE9195000A902F /* StockChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
 		A6755EF01EFF0B60000A902F /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A6755EF21EFF0B83000A902F /* ServerRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
-		A6755EF41EFF1069000A902F /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		A694A7A61EFBECF8008BF4CF /* StockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A694A7B01EFBECF8008BF4CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +124,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A606A71C1F015B4800E148AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A606A71D1F015B5A00E148AD /* Stock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A606A75B1F015BF300E148AD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A6755EEE1EFE96D6000A902F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +185,8 @@
 				A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */,
 				A694A7B51EFBECF8008BF4CF /* Info.plist */,
 				A6A469551EFD5842007DA66A /* Localizable.strings */,
-				A6755EF41EFF1069000A902F /* Stock.swift */,
+				A606A75B1F015BF300E148AD /* Utils */,
+				A606A71C1F015B4800E148AD /* Model */,
 				A6755EEE1EFE96D6000A902F /* Services */,
 				A694A7DB1EFC0836008BF4CF /* Extensions */,
 				A694A7D01EFBF689008BF4CF /* Scenes */,
@@ -462,7 +478,7 @@
 				A6A4695B1EFD5FEF007DA66A /* StockListViewController.swift in Sources */,
 				A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */,
 				A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */,
-				A6755EF51EFF1069000A902F /* Stock.swift in Sources */,
+				A606A71E1F015B5A00E148AD /* Stock.swift in Sources */,
 				A6755EF11EFF0B60000A902F /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

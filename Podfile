@@ -12,6 +12,7 @@ target 'StockChart' do
     pod 'Alamofire'
     pod 'ReactiveCocoa'
     pod 'MBProgressHUD'
+    pod 'Charts'
     
     # Pods for StockChart
     

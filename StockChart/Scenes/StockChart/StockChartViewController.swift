@@ -26,7 +26,7 @@ class StockChartViewController: BaseViewController, StockChartViewControllerInpu
     var stock: Stock
     init(stock: Stock) {
         self.stock = stock
-        super.init()        
+        super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,4 +36,6 @@ class StockChartViewController: BaseViewController, StockChartViewControllerInpu
     override func initialize() {
         StockChartConfigurator.sharedInstance.configure(viewController: self)
     }
+    
+    
 }

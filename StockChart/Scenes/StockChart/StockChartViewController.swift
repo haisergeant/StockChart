@@ -117,6 +117,10 @@ extension StockChartViewController: UITableViewDataSource {
 extension StockChartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        if let stock = self.contents?[indexPath.row] as? DayStockViewModel {
+            stock.selected.value = !stock.selected.value
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        }
     }
 }
 
@@ -197,15 +201,50 @@ class StockChartCell: UITableViewCell {
             
             self.labelPrice.snp.makeConstraints { [unowned self] make in
                 // make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
-                make.centerY.equalTo(self)
+                make.centerY.equalTo(self.upperArea)
                 make.right.equalTo(self.labelChange.snp.left).offset(-model.padding.paddingBetweenX)
             }
             
             self.labelChange.snp.makeConstraints { [unowned self] make in
                 // make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
-                make.centerY.equalTo(self)
+                make.centerY.equalTo(self.upperArea)
                 make.right.equalTo(-model.padding.paddingInnerX)
                 make.width.equalTo(50)
+            }
+            
+            var prevView: UIView? = nil
+            for item in model.items {
+                let priceView = PriceView(title: item.title, price: item.price)
+                self.lowerArea.addSubview(priceView)
+                
+                if prevView == nil {
+                    priceView.snp.makeConstraints { make in
+                        make.left.equalTo(self.lowerArea)
+                        make.top.equalTo(self.lowerArea).priority(.low)
+                        make.bottom.equalTo(self.lowerArea).priority(.low)
+                    }
+                } else if let prevView = prevView {
+                    priceView.snp.makeConstraints { make in
+                        make.left.equalTo(prevView.snp.right)
+                        make.top.equalTo(self.lowerArea).priority(.low)
+                        make.bottom.equalTo(self.lowerArea).priority(.low)
+                        make.width.equalTo(prevView.snp.width)
+                    }
+                }
+                prevView = priceView
+            }
+            prevView?.snp.makeConstraints { make in
+                make.right.equalTo(self.lowerArea)
+            }
+            
+            if model.selected.value {
+                self.lowerArea.heightContraint?.remove()
+                self.lowerArea.isHidden = false
+            } else {
+                self.lowerArea.snp.makeConstraints { make in
+                    make.height.equalTo(0).priority(.required)
+                }
+                self.lowerArea.isHidden = true
             }
             self.layoutSubviews()
         }
@@ -220,10 +259,12 @@ class PriceView: UIView {
         var titleStyle: StringStyle
         var priceStyle: StringStyle
         var backgroundColor: UIColor
-        init(titleStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
-                                                   .color(.white)),
-             priceStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 14)),
-                                                   .color(.white)),
+        init(titleStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 9)),
+                                                   .color(.white),
+                                                   .alignment(.center)),
+             priceStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
+                                                   .color(.white),
+                                                   .alignment(.center)),
              backgroundColor: UIColor = .lightGray) {
             self.titleStyle = titleStyle
             self.priceStyle = priceStyle

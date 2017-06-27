@@ -11,6 +11,8 @@
 
 import UIKit
 import BonMot
+import ReactiveCocoa
+import ReactiveSwift
 
 struct StockChartRequest {
     var stock: Stock
@@ -30,6 +32,8 @@ class StockChartViewModel {
 class DayStockViewModel: StockViewModel {
     let day: NSAttributedString
     var items: [PriceModel]
+    
+    var selected = MutableProperty<Bool>(false)
     
     init(stock: Stock,
          padding: Padding = Padding(),

@@ -37,6 +37,8 @@
 		A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A4695C1EFD6018007DA66A /* WelcomeRouter.swift */; };
 		A6D59E7A1F028E0C0092B441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D59E791F028E0C0092B441 /* Constants.swift */; };
 		A6D59E7C1F029B1C0092B441 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D59E7B1F029B1C0092B441 /* UIView+Utils.swift */; };
+		A6D59E7F1F02A7930092B441 /* StockChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D59E7E1F02A7930092B441 /* StockChartCell.swift */; };
+		A6D59E811F02A7D10092B441 /* StockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D59E801F02A7D10092B441 /* StockListCell.swift */; };
 		BBFA8F360B2494426BAA5372 /* Pods_StockChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0298C9392C85B10B77A67961 /* Pods_StockChart.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		A6A4695C1EFD6018007DA66A /* WelcomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		A6D59E791F028E0C0092B441 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6D59E7B1F029B1C0092B441 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		A6D59E7E1F02A7930092B441 /* StockChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartCell.swift; sourceTree = "<group>"; };
+		A6D59E801F02A7D10092B441 /* StockListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListCell.swift; sourceTree = "<group>"; };
 		C7DD05DAE7267B5ACFD778FD /* Pods-StockChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.debug.xcconfig"; sourceTree = "<group>"; };
 		E4239F36C4022599BA8C56F2 /* Pods-StockChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.release.xcconfig"; sourceTree = "<group>"; };
 		EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockChartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,7 @@
 				A6755EE31EFE9195000A902F /* StockChartPresenter.swift */,
 				A6755EE41EFE9195000A902F /* StockChartRouter.swift */,
 				A6755EE51EFE9195000A902F /* StockChartViewController.swift */,
+				A6D59E7E1F02A7930092B441 /* StockChartCell.swift */,
 			);
 			path = StockChart;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				A6755ED71EFE90B4000A902F /* StockListPresenter.swift */,
 				A6755ED81EFE90B4000A902F /* StockListRouter.swift */,
 				A6A4695A1EFD5FEF007DA66A /* StockListViewController.swift */,
+				A6D59E801F02A7D10092B441 /* StockListCell.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -486,11 +492,13 @@
 				A6755EDE1EFE90B4000A902F /* StockListRouter.swift in Sources */,
 				A6755EEB1EFE9195000A902F /* StockChartRouter.swift in Sources */,
 				A6755EEA1EFE9195000A902F /* StockChartPresenter.swift in Sources */,
+				A6D59E811F02A7D10092B441 /* StockListCell.swift in Sources */,
 				A694A7D71EFBF6E6008BF4CF /* BaseViewController.swift in Sources */,
 				A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */,
 				A6755EDC1EFE90B4000A902F /* StockListModels.swift in Sources */,
 				A6755EE71EFE9195000A902F /* StockChartConfigurator.swift in Sources */,
 				A6A4695B1EFD5FEF007DA66A /* StockListViewController.swift in Sources */,
+				A6D59E7F1F02A7930092B441 /* StockChartCell.swift in Sources */,
 				A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */,
 				A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */,
 				A606A71E1F015B5A00E148AD /* Stock.swift in Sources */,

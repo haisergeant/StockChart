@@ -72,8 +72,8 @@ class StockListViewController: BaseViewController {
         self.tableView.separatorStyle = .none
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         MBProgressHUD.showAdded(to: self.view, animated: true)
         self.output.load(request: StockListRequest(symbolList: STOCK_LIST))
     }
@@ -112,13 +112,11 @@ extension StockListViewController: UITableViewDataSource {
 extension StockListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        if let item = self.contents?[indexPath.row] as? Stock {
-            self.router.navigateToGraph(stock: item)
+        if let item = self.contents?[indexPath.row] as? StockViewModel {
+            self.router.navigateToGraph(stock: item.stock)
         }
     }
 }
-
-fileprivate let SeparatorColor = UIColor(red: 220.0 / 255.0, green: 220.0 / 255.0, blue: 220.0 / 255.0, alpha: 1.0)
 
 class StockViewCell: UITableViewCell {
     let labelSymbol = UILabel()
@@ -143,7 +141,7 @@ class StockViewCell: UITableViewCell {
             self.labelSymbol.attributedText = model.labelTitle
             self.labelChange.attributedText = model.changeText
             self.labelPrice.attributedText = model.priceText
-            self.separator.backgroundColor = SeparatorColor
+            self.separator.backgroundColor = Color.SeparatorColor
             
             self.separator.snp.makeConstraints { make in
                 make.left.equalTo(0)
@@ -169,9 +167,6 @@ class StockViewCell: UITableViewCell {
                 make.right.equalTo(-model.padding.paddingInnerX)
                 make.width.equalTo(50)
             }
-            
-            
-            
             self.layoutSubviews()
         }
     }

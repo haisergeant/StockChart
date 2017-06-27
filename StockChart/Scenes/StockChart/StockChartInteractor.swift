@@ -12,12 +12,19 @@
 import UIKit
 
 protocol StockChartInteractorInput {
+    func load(request: StockChartRequest)
 }
 
 protocol StockChartInteractorOutput {
+    func present(response: StockChartResponse)
 }
 
 class StockChartInteractor: StockChartInteractorInput {
     var output: StockChartInteractorOutput!
     // MARK: - Business logic
+    
+    func load(request: StockChartRequest) {
+        let data = StockGenerator.instance.generateStock(stock: request.stock)        
+        self.output.present(response: StockChartResponse(data: data))
+    }
 }

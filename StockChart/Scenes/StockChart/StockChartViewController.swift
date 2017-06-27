@@ -10,20 +10,35 @@
 //
 
 import UIKit
+import BonMot
+import SnapKit
 
 protocol StockChartViewControllerInput {
+    func display(viewModel: StockChartViewModel)
 }
 
 protocol StockChartViewControllerOutput {
-    
+    func load(request: StockChartRequest)
 }
 
-class StockChartViewController: BaseViewController, StockChartViewControllerInput {
+class StockChartViewController: BaseViewController {
     var output: StockChartViewControllerOutput!
     var router: StockChartRouter!
     
     // MARK: - Object lifecycle
     var stock: Stock
+    
+    
+    var tableView = UITableView()
+    
+    var contents: [AnyObject]? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // TODO: Hai Le table header view
+    
     init(stock: Stock) {
         self.stock = stock
         super.init()
@@ -37,5 +52,221 @@ class StockChartViewController: BaseViewController, StockChartViewControllerInpu
         StockChartConfigurator.sharedInstance.configure(viewController: self)
     }
     
+    override func configureSubviews() {
+        super.configureSubviews()
+        self.view.addSubview(self.tableView)
+    }
     
+    override func configureLayout() {
+        super.configureLayout()
+        self.tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    override func configureContent() {
+        super.configureContent()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
+        
+        self.tableView.separatorStyle = .none
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output.load(request: StockChartRequest(stock: self.stock))
+    }
+    
+    override func shouldShowNavigationBar() -> Bool {
+        return true
+    }
+}
+
+extension StockChartViewController: StockChartViewControllerInput {
+    func display(viewModel: StockChartViewModel) {
+        self.contents = viewModel.contents
+    }
+}
+
+extension StockChartViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let contents = self.contents {
+            return contents.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let contents = self.contents, contents.count > 0 {
+            let item = contents[indexPath.row]
+            let cell = StockChartCell()
+            cell.configure(model: item)
+            return cell
+        }        
+        return UITableViewCell()
+    }
+}
+
+extension StockChartViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+
+class StockChartCell: UITableViewCell {
+    var labelDate = UILabel()
+    var labelSymbol = UILabel()
+    var labelPrice = UILabel()
+    var labelChange = UILabel()
+    
+    var upperArea = UIView()
+    var lowerArea = UIView()
+    let separator = UIView()
+    
+    init() {
+        super.init(style: UITableViewCellStyle.default, reuseIdentifier: "StockViewCell")
+        self.configureSubviews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureSubviews() {
+        self.contentView.addSubview(self.upperArea)
+        self.upperArea.addSubview(self.labelDate)
+        self.upperArea.addSubview(self.labelSymbol)
+        self.upperArea.addSubview(self.labelPrice)
+        self.upperArea.addSubview(self.labelChange)
+        
+        self.contentView.addSubview(self.lowerArea)
+        self.contentView.addSubview(self.separator)
+    }
+    
+    func configure(model: AnyObject) {
+        if let model = model as? DayStockViewModel {
+            self.labelDate.attributedText = model.day
+            self.labelDate.numberOfLines = 0            
+            self.labelSymbol.attributedText = model.labelTitle
+            self.labelChange.attributedText = model.changeText
+            self.labelPrice.attributedText = model.priceText
+            self.separator.backgroundColor = Color.SeparatorColor
+            
+            self.upperArea.snp.makeConstraints { make in
+                make.left.equalTo(0)
+                make.right.equalTo(0)
+                make.top.equalTo(0)
+            }
+            
+            self.lowerArea.snp.makeConstraints { make in
+                make.left.equalTo(0)
+                make.right.equalTo(0)
+                make.top.equalTo(self.upperArea.snp.bottom).offset(0)
+                make.bottom.equalTo(self.separator.snp.top)
+            }
+            
+            self.separator.snp.makeConstraints { make in
+                make.left.equalTo(0)
+                make.right.equalTo(0)
+                make.bottom.equalTo(0)
+                make.height.equalTo(1)
+            }
+            
+            self.labelDate.snp.makeConstraints { make in
+                make.left.equalTo(model.padding.paddingInnerX)
+                make.top.equalTo(model.padding.paddingInnerY)
+                make.bottom.equalTo(-model.padding.paddingInnerY)
+            }
+            self.labelDate.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+            
+            self.labelSymbol.snp.makeConstraints { [unowned self] make in
+                make.left.equalTo(self.labelDate.snp.right).offset(model.padding.paddingBetweenX)
+                make.top.equalTo(model.padding.paddingInnerY)
+                make.bottom.equalTo(-model.padding.paddingInnerY)
+                make.right.equalTo(self.labelPrice.snp.left).offset(-model.padding.paddingBetweenX)
+            }
+            
+            self.labelPrice.snp.makeConstraints { [unowned self] make in
+                // make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
+                make.centerY.equalTo(self)
+                make.right.equalTo(self.labelChange.snp.left).offset(-model.padding.paddingBetweenX)
+            }
+            
+            self.labelChange.snp.makeConstraints { [unowned self] make in
+                // make.firstBaseline.equalTo(self.labelSymbol.snp.firstBaseline)
+                make.centerY.equalTo(self)
+                make.right.equalTo(-model.padding.paddingInnerX)
+                make.width.equalTo(50)
+            }
+            self.layoutSubviews()
+        }
+    }
+}
+
+class PriceView: UIView {
+    var labelTitle = UILabel()
+    var labelPrice = UILabel()
+    
+    struct Style {
+        var titleStyle: StringStyle
+        var priceStyle: StringStyle
+        var backgroundColor: UIColor
+        init(titleStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
+                                                   .color(.white)),
+             priceStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 14)),
+                                                   .color(.white)),
+             backgroundColor: UIColor = .lightGray) {
+            self.titleStyle = titleStyle
+            self.priceStyle = priceStyle
+            self.backgroundColor = backgroundColor
+        }
+    }
+    
+    init(title: String, price: String,
+         style: Style = Style(), padding: Padding = Padding(paddingInnerX: 5.0,
+                                                            paddingInnerY: 10.0,
+                                                            paddingBetweenX: 5.0,
+                                                            paddingBetweenY: 5.0)) {
+        super.init(frame: .zero)
+        self.configureSubviews()
+        
+        self.labelTitle.attributedText = title.styled(with: style.titleStyle)
+        self.labelPrice.attributedText = price.styled(with: style.priceStyle)
+        self.backgroundColor = style.backgroundColor
+        
+        self.configureLayout(padding: padding)
+    }
+    
+    func configureSubviews() {
+        self.addSubview(self.labelTitle)
+        self.addSubview(self.labelPrice)
+    }
+    
+    func configureLayout(padding: Padding) {
+        self.labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(padding.paddingInnerY)
+            make.centerX.equalTo(self)
+        }
+        
+        self.labelPrice.snp.makeConstraints { make in
+            make.top.equalTo(self.labelTitle.snp.bottom).offset(padding.paddingBetweenY)
+            make.centerX.equalTo(self)
+            make.left.equalTo(padding.paddingInnerX)
+            make.right.equalTo(-padding.paddingInnerX)
+            make.bottom.equalTo(-padding.paddingInnerY)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

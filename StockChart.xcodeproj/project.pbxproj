@@ -23,6 +23,7 @@
 		A6755EEC1EFE9195000A902F /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EE51EFE9195000A902F /* StockChartViewController.swift */; };
 		A6755EF11EFF0B60000A902F /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF01EFF0B60000A902F /* Repository.swift */; };
 		A6755EF31EFF0B83000A902F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6755EF21EFF0B83000A902F /* ServerRepository.swift */; };
+		A6943BA11F01AD81001F7CDA /* StockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6943BA01F01AD81001F7CDA /* StockGenerator.swift */; };
 		A694A7AA1EFBECF8008BF4CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */; };
 		A694A7B11EFBECF8008BF4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B01EFBECF8008BF4CF /* Assets.xcassets */; };
 		A694A7B41EFBECF8008BF4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */; };
@@ -34,6 +35,7 @@
 		A6A469531EFD5842007DA66A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A469551EFD5842007DA66A /* Localizable.strings */; };
 		A6A4695B1EFD5FEF007DA66A /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A4695A1EFD5FEF007DA66A /* StockListViewController.swift */; };
 		A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A4695C1EFD6018007DA66A /* WelcomeRouter.swift */; };
+		A6D59E7A1F028E0C0092B441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D59E791F028E0C0092B441 /* Constants.swift */; };
 		BBFA8F360B2494426BAA5372 /* Pods_StockChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0298C9392C85B10B77A67961 /* Pods_StockChart.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,7 @@
 		A6755EE51EFE9195000A902F /* StockChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
 		A6755EF01EFF0B60000A902F /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A6755EF21EFF0B83000A902F /* ServerRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		A6943BA01F01AD81001F7CDA /* StockGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockGenerator.swift; sourceTree = "<group>"; };
 		A694A7A61EFBECF8008BF4CF /* StockChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A694A7A91EFBECF8008BF4CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A694A7B01EFBECF8008BF4CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		A6A469591EFD589F007DA66A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A6A4695A1EFD5FEF007DA66A /* StockListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
 		A6A4695C1EFD6018007DA66A /* WelcomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
+		A6D59E791F028E0C0092B441 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C7DD05DAE7267B5ACFD778FD /* Pods-StockChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.debug.xcconfig"; sourceTree = "<group>"; };
 		E4239F36C4022599BA8C56F2 /* Pods-StockChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockChart.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockChart/Pods-StockChart.release.xcconfig"; sourceTree = "<group>"; };
 		EB9CCFB82A3C4BF59D91F057 /* Pods_StockChartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockChartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A606A75C1F0162D500E148AD /* AnimationHelper.swift */,
+				A6943BA01F01AD81001F7CDA /* StockGenerator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				A694A7B21EFBECF8008BF4CF /* LaunchScreen.storyboard */,
 				A694A7B51EFBECF8008BF4CF /* Info.plist */,
 				A6A469551EFD5842007DA66A /* Localizable.strings */,
+				A6D59E791F028E0C0092B441 /* Constants.swift */,
 				A606A75B1F015BF300E148AD /* Utils */,
 				A606A71C1F015B4800E148AD /* Model */,
 				A6755EEE1EFE96D6000A902F /* Services */,
@@ -469,6 +475,7 @@
 				A6755EE81EFE9195000A902F /* StockChartInteractor.swift in Sources */,
 				A6755EF31EFF0B83000A902F /* ServerRepository.swift in Sources */,
 				A6755EDA1EFE90B4000A902F /* StockListConfigurator.swift in Sources */,
+				A6D59E7A1F028E0C0092B441 /* Constants.swift in Sources */,
 				A6755EE91EFE9195000A902F /* StockChartModels.swift in Sources */,
 				A6A4695D1EFD6018007DA66A /* WelcomeRouter.swift in Sources */,
 				A606A75D1F0162D500E148AD /* AnimationHelper.swift in Sources */,
@@ -483,6 +490,7 @@
 				A6755EDB1EFE90B4000A902F /* StockListInteractor.swift in Sources */,
 				A6755EDD1EFE90B4000A902F /* StockListPresenter.swift in Sources */,
 				A606A71E1F015B5A00E148AD /* Stock.swift in Sources */,
+				A6943BA11F01AD81001F7CDA /* StockGenerator.swift in Sources */,
 				A6755EF11EFF0B60000A902F /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

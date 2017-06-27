@@ -12,17 +12,22 @@
 import UIKit
 
 protocol StockChartPresenterInput {
-    
+    func present(response: StockChartResponse)
 }
 
 protocol StockChartPresenterOutput: class {
-    
+    func display(viewModel: StockChartViewModel)
 }
 
 class StockChartPresenter: StockChartPresenterInput {
     weak var output: StockChartPresenterOutput!
     
     // MARK: - Presentation logic
-    
-    
+    func present(response: StockChartResponse) {
+        var array = [DayStockViewModel]()
+        for item in response.data {
+            array.append(DayStockViewModel(stock: item))
+        }
+        self.output.display(viewModel: StockChartViewModel(contents: array))
+    }    
 }

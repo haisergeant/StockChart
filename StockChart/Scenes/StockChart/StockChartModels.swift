@@ -10,3 +10,48 @@
 //
 
 import UIKit
+import BonMot
+
+struct StockChartRequest {
+    var stock: Stock
+}
+
+struct StockChartResponse {
+    var data: [Stock]
+}
+
+class StockChartViewModel {
+    var contents: [DayStockViewModel]
+    init(contents: [DayStockViewModel]) {
+        self.contents = contents
+    }
+}
+
+class DayStockViewModel: StockViewModel {
+    let day: NSAttributedString
+    var items: [PriceModel]
+    
+    init(stock: Stock,
+         padding: Padding = Padding(),
+         dateStyle: StringStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: 11)),
+                                                      .color(.black),
+                                                      .alignment(.center),
+                                                      .xmlRules([
+                                                        .style("b", StringStyle(.font(UIFont.boldSystemFont(ofSize: 15))))
+                                                        ]))) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "<b>dd</b>\nMMM"
+        self.day = formatter.string(from: stock.date).styled(with: dateStyle)
+        self.items = [PriceModel]()
+        self.items.append(PriceModel(title: "OPEN", price: String(stock.openValue)))
+        self.items.append(PriceModel(title: "HIGH", price: String(stock.highValue)))
+        self.items.append(PriceModel(title: "LOW", price: String(stock.lowValue)))
+        self.items.append(PriceModel(title: "MKT CAP", price: String(stock.marketCap)))        
+        super.init(stock: stock, padding: padding)
+    }
+}
+
+struct PriceModel {
+    let title: String
+    let price: String
+}

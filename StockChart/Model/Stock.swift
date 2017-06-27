@@ -18,6 +18,9 @@ class Stock {
     var lowValue: Float = 0
     var marketCap: String = ""
     
+    var date: Date = Date()
+    
+    
     init(symbol: String, askPrice: Float, valueChange: String,
          openValue: Float, highValue: Float, lowValue: Float,
          marketCap: String) {
@@ -28,6 +31,7 @@ class Stock {
         self.highValue = highValue
         self.lowValue = lowValue
         self.marketCap = marketCap
+
     }
     
     init(dictionary: [String: AnyObject]) {
@@ -52,6 +56,6 @@ class Stock {
         }
         if let value = dictionary["MarketCapitalization"] as? String {
             self.marketCap = value
-        }        
+        }
     }
 }

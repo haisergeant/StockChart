@@ -32,8 +32,7 @@ class WelcomeViewController: BaseViewController {
         static let buttonTitle = "WELCOME_SCREEN_BUTTON_TITLE".localized()
     }
     
-    struct Style {
-        // TODO: add Style here
+    struct Style {        
         static let titleStyle = StringStyle(.font(UIFont.boldSystemFont(ofSize: TitleFontSize)))
         static let descriptionStyle = StringStyle(.font(UIFont.systemFont(ofSize: DescriptionFontSize)))
     }
@@ -98,8 +97,12 @@ class WelcomeViewController: BaseViewController {
         self.buttonNext.action { [unowned self] _ in
             self.router.navigateNext()
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // Animation for logo
+        self.imageViewLogo.layer.removeAllAnimations()
         self.imageViewLogo.layer.add(AnimationHelper.rotateAnimation(angle: 360.0, time: 10, repeating: true),
                                      forKey: "rotate")
     }

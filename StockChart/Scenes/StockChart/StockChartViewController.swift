@@ -31,13 +31,10 @@ class StockChartViewController: BaseViewController {
     
     var tableView = UITableView()
     
-    var contents: [AnyObject]? {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    var contents: [AnyObject]?
+        
     
-    // TODO: Hai Le table header view
+    var headerView: GraphView?
     
     init(stock: Stock) {
         self.stock = stock
@@ -90,6 +87,17 @@ class StockChartViewController: BaseViewController {
 extension StockChartViewController: StockChartViewControllerInput {
     func display(viewModel: StockChartViewModel) {
         self.contents = viewModel.contents
+        
+        if self.headerView == nil, let contents = self.contents as? [DayStockViewModel] {
+            self.headerView = GraphView(data: contents)
+            self.tableView.tableHeaderView = self.headerView
+            self.headerView?.snp.makeConstraints { make in
+                make.height.equalTo(200)
+                make.width.equalTo(self.tableView.snp.width)
+            }
+            
+        }
+        self.tableView.reloadData()
     }
 }
 

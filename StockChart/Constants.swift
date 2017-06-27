@@ -11,4 +11,8 @@ import UIKit
 
 struct Color {
     static let SeparatorColor = UIColor(red: 220.0 / 255.0, green: 220.0 / 255.0, blue: 220.0 / 255.0, alpha: 1.0)
+    
+    static let GreenColor = UIColor(red: 106.0 / 255.0, green: 187.0 / 255.0, blue: 97.0 / 255.0, alpha: 1.0)
+    static let RedColor = UIColor(red: 185.0 / 255.0, green: 101.0 / 255.0, blue: 109.0 / 255.0, alpha: 1.0)
+
 }

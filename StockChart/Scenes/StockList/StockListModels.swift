@@ -17,8 +17,6 @@ fileprivate let PaddingInnerY = CGFloat(20)
 fileprivate let PaddingBetweenX = CGFloat(20)
 fileprivate let PaddingBetweenY = CGFloat(20)
 
-fileprivate let GreenColor = UIColor(red: 106.0 / 255.0, green: 187.0 / 255.0, blue: 97.0 / 255.0, alpha: 1.0)
-fileprivate let RedColor = UIColor(red: 185.0 / 255.0, green: 101.0 / 255.0, blue: 109.0 / 255.0, alpha: 1.0)
 
 struct StockListRequest {
     var symbolList: [String]
@@ -72,9 +70,9 @@ class StockViewModel {
         if let number = Double(self.stock.valueChange) {
             var changeStyle = self.style.changeStyle
             if number > 0 {
-                changeStyle = changeStyle.byAdding(.color(GreenColor))
+                changeStyle = changeStyle.byAdding(.color(Color.GreenColor))
             } else {
-                changeStyle = changeStyle.byAdding(.color(RedColor))
+                changeStyle = changeStyle.byAdding(.color(Color.RedColor))
             }
             self.changeText = self.stock.valueChange.styled(with: changeStyle)
         }

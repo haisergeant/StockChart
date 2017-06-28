@@ -15,15 +15,20 @@ class GraphView: UIView {
     let chartView = LineChartView()
     
     var contents = [ChartDataEntry]()
-    init(data: [DayStockViewModel]) {
-        super.init(frame: .zero)
-        
-        for i in 0..<data.count {
-            self.contents.append(ChartDataEntry(x: Double(i), y: Double(data[i].stock.askPrice)))
+    
+    var data: [DayStockViewModel]? {
+        didSet {
+            self.configureContent()
         }
-        
+    }
+    
+    init(data: [DayStockViewModel]?) {
+        super.init(frame: .zero)
+        self.data = data
+
         self.configureSubviews()
         self.configureLayout()
+        self.configureContent()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,23 +42,32 @@ class GraphView: UIView {
         self.chartView.setScaleEnabled(true)
         self.chartView.drawGridBackgroundEnabled = false        
         self.chartView.pinchZoomEnabled = true
-        
-        let lineDataSet = LineChartDataSet(values: contents, label: nil)
-        lineDataSet.setColor(Color.GreenColor)
-        lineDataSet.lineWidth = 2.0
-        lineDataSet.circleRadius = 3.0
-        lineDataSet.mode = .horizontalBezier
-        lineDataSet.drawValuesEnabled = false
-        lineDataSet.drawCirclesEnabled = false
-        lineDataSet.drawFilledEnabled = true
-        lineDataSet.fillAlpha = 65.0 / 255.0
-        lineDataSet.fillColor = UIColor(red: 51.0 / 255.0,
-                                        green: 160.0 / 255.0,
-                                        blue: 220.0 / 255.0,
-                                        alpha: 1.0)
-        
-        let lineChartData = LineChartData(dataSet: lineDataSet)
-        self.chartView.data = lineChartData
+    }
+    
+    func configureContent() {
+        if let data = data {
+            self.contents.removeAll()
+            for i in 0..<data.count {
+                self.contents.append(ChartDataEntry(x: Double(i), y: Double(data[i].stock.askPrice)))
+            }
+            
+            let lineDataSet = LineChartDataSet(values: self.contents, label: nil)
+            lineDataSet.setColor(Color.GreenColor)
+            lineDataSet.lineWidth = 2.0
+            lineDataSet.circleRadius = 3.0
+            lineDataSet.mode = .horizontalBezier
+            lineDataSet.drawValuesEnabled = false
+            lineDataSet.drawCirclesEnabled = false
+            lineDataSet.drawFilledEnabled = true
+            lineDataSet.fillAlpha = 65.0 / 255.0
+            lineDataSet.fillColor = UIColor(red: 51.0 / 255.0,
+                                            green: 160.0 / 255.0,
+                                            blue: 220.0 / 255.0,
+                                            alpha: 1.0)
+            
+            let lineChartData = LineChartData(dataSet: lineDataSet)
+            self.chartView.data = lineChartData
+        }
     }
     
     func configureLayout() {

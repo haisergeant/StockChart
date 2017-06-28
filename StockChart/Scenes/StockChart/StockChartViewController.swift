@@ -31,10 +31,14 @@ class StockChartViewController: BaseViewController {
     
     var tableView = UITableView()
     
-    var contents: [AnyObject]?
+    var contents: [AnyObject]? {
+        didSet {
+            self.view.layoutIfNeeded()
+        }
+    }
         
     
-    var headerView: GraphView?
+    var headerView = GraphView(data: nil)
     
     init(stock: Stock) {
         self.stock = stock
@@ -52,12 +56,18 @@ class StockChartViewController: BaseViewController {
     override func configureSubviews() {
         super.configureSubviews()
         self.view.addSubview(self.tableView)
+        self.tableView.tableHeaderView = self.headerView
     }
     
     override func configureLayout() {
         super.configureLayout()
         self.tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(0)
+        }
+        
+        self.headerView.snp.makeConstraints { make in
+            make.height.equalTo(200)
+            make.width.equalTo(self.tableView.snp.width)
         }
     }
     
@@ -87,17 +97,9 @@ class StockChartViewController: BaseViewController {
 extension StockChartViewController: StockChartViewControllerInput {
     func display(viewModel: StockChartViewModel) {
         self.contents = viewModel.contents
-        
-        if self.headerView == nil, let contents = self.contents as? [DayStockViewModel] {
-            self.headerView = GraphView(data: contents)
-            self.tableView.tableHeaderView = self.headerView
-            self.headerView?.snp.makeConstraints { make in
-                make.height.equalTo(200)
-                make.width.equalTo(self.tableView.snp.width)
-            }
-            
+        if let contents = self.contents as? [DayStockViewModel] {
+            self.headerView.data = contents
         }
-        self.tableView.reloadData()
     }
 }
 

@@ -43,6 +43,9 @@ class Stock {
         }
         if let value = dictionary["Change"] as? String {
             self.valueChange = value
+        } else {
+            // TODO: Hai Le
+            self.valueChange = "+0.48"
         }
         
         if let value = dictionary["Open"] as? String, let num = Float(value) {

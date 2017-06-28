@@ -12,9 +12,29 @@ import SnapKit
 import Charts
 
 class GraphView: UIView {
-    let chartView = LineChartView()
+    let leftView = PriceView()
+    let rightView = PriceView()
     
+    let chartView = LineChartView()
     var contents = [ChartDataEntry]()
+    
+    struct Style {
+        static let LeftBoxStyle = PriceView.Style(titleStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
+                                                                          .color(.black), .alignment(.center)),
+                                                  priceStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 15)),
+                                                                          .color(.black), .alignment(.center)),
+                                                  backgroundColor: Color.LightBlue)
+        static let PositiveBoxStyle = PriceView.Style(titleStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
+                                                                              .color(.black), .alignment(.center)),
+                                                      priceStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 15)),
+                                                                              .color(Color.GreenColor), .alignment(.center)),
+                                                      backgroundColor: Color.LightBlue)
+        static let NegativeBoxStyle = PriceView.Style(titleStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 13)),
+                                                                              .color(.black), .alignment(.center)),
+                                                      priceStyle: StringStyle(.font(UIFont.boldSystemFont(ofSize: 15)),
+                                                                              .color(Color.RedColor), .alignment(.center)),
+                                                      backgroundColor: Color.LightBlue)
+    }
     
     var data: [DayStockViewModel]? {
         didSet {
@@ -23,9 +43,8 @@ class GraphView: UIView {
     }
     
     init(data: [DayStockViewModel]?) {
-        super.init(frame: .zero)
         self.data = data
-
+        super.init(frame: .zero)
         self.configureSubviews()
         self.configureLayout()
         self.configureContent()
@@ -41,7 +60,10 @@ class GraphView: UIView {
         self.chartView.dragEnabled = true
         self.chartView.setScaleEnabled(true)
         self.chartView.drawGridBackgroundEnabled = false        
-        self.chartView.pinchZoomEnabled = true
+        self.chartView.pinchZoomEnabled = false
+        
+        self.addSubview(self.leftView)
+        self.addSubview(self.rightView)
     }
     
     func configureContent() {
@@ -51,6 +73,22 @@ class GraphView: UIView {
                 self.contents.append(ChartDataEntry(x: Double(i), y: Double(data[i].stock.askPrice)))
             }
             
+            if let first = data.first {
+                leftView.title = "CURRENT_PRICE".localized()
+                leftView.price = String(first.stock.askPrice)
+                leftView.style = Style.LeftBoxStyle
+                
+                rightView.title = "MOVEMENT".localized()
+                rightView.price = first.stock.valueChange
+                if let value = Double(first.stock.valueChange) {
+                    rightView.style = value > 0.0 ? Style.PositiveBoxStyle : Style.NegativeBoxStyle
+                } else {
+                    rightView.style = Style.PositiveBoxStyle
+                }
+                
+            }
+            
+            
             let lineDataSet = LineChartDataSet(values: self.contents, label: nil)
             lineDataSet.setColor(Color.GreenColor)
             lineDataSet.lineWidth = 2.0
@@ -59,23 +97,43 @@ class GraphView: UIView {
             lineDataSet.drawValuesEnabled = false
             lineDataSet.drawCirclesEnabled = false
             lineDataSet.drawFilledEnabled = true
-            lineDataSet.fillAlpha = 65.0 / 255.0
-            lineDataSet.fillColor = UIColor(red: 51.0 / 255.0,
-                                            green: 160.0 / 255.0,
-                                            blue: 220.0 / 255.0,
-                                            alpha: 1.0)
+            lineDataSet.fillAlpha = 1.0
+            lineDataSet.fillColor = Color.GreenColor
             
             let lineChartData = LineChartData(dataSet: lineDataSet)
             self.chartView.data = lineChartData
+            
+            let xAxis = self.chartView.xAxis
+            xAxis.drawLabelsEnabled = false
+            
+            let leftAxis = self.chartView.leftAxis
+            leftAxis.drawLabelsEnabled = false
+            
+            let rightAxis = self.chartView.rightAxis
+            rightAxis.drawLabelsEnabled = false
         }
     }
     
     func configureLayout() {
-        self.chartView.snp.makeConstraints { make in
+        self.leftView.snp.makeConstraints { make in
             make.top.equalTo(20)
+            make.left.equalTo(20)
+        }
+        
+        self.rightView.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.right.equalTo(-20)
+            make.left.equalTo(self.leftView.snp.right).offset(20)
+            make.width.equalTo(self.leftView.snp.width)
+            make.height.equalTo(self.leftView.snp.height)
+        }
+        
+        self.chartView.snp.makeConstraints { make in
+            make.top.equalTo(self.leftView.snp.bottom).offset(20)
             make.bottom.equalTo(-20)
             make.left.equalTo(20)
             make.right.equalTo(-20)
+            make.height.equalTo(150)
         }
     }
 }
@@ -226,24 +284,50 @@ class PriceView: UIView {
         }
     }
     
-    init(title: String, price: String,
+    var title: String {
+        didSet {
+            self.configureContent()
+            self.layoutIfNeeded()
+        }
+    }
+    
+    var price: String {
+        didSet {
+            self.configureContent()
+            self.layoutIfNeeded()
+        }
+    }
+    
+    var style: Style {
+        didSet {
+            self.configureContent()
+        }
+    }
+    
+    init(title: String = "", price: String = "",
          style: Style = Style(), padding: Padding = Padding(paddingInnerX: 5.0,
                                                             paddingInnerY: 10.0,
                                                             paddingBetweenX: 5.0,
                                                             paddingBetweenY: 5.0)) {
+        self.title = title
+        self.price = price
+        self.style = style
         super.init(frame: .zero)
+
         self.configureSubviews()
-        
-        self.labelTitle.attributedText = title.styled(with: style.titleStyle)
-        self.labelPrice.attributedText = price.styled(with: style.priceStyle)
-        self.backgroundColor = style.backgroundColor
-        
         self.configureLayout(padding: padding)
+        self.configureContent()
     }
     
     func configureSubviews() {
         self.addSubview(self.labelTitle)
         self.addSubview(self.labelPrice)
+    }
+    
+    func configureContent() {
+        self.labelTitle.attributedText = title.styled(with: style.titleStyle)
+        self.labelPrice.attributedText = price.styled(with: style.priceStyle)
+        self.backgroundColor = style.backgroundColor
     }
     
     func configureLayout(padding: Padding) {

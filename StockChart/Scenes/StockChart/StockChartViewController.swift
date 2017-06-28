@@ -66,7 +66,6 @@ class StockChartViewController: BaseViewController {
         }
         
         self.headerView.snp.makeConstraints { make in
-            make.height.equalTo(200)
             make.width.equalTo(self.tableView.snp.width)
         }
     }

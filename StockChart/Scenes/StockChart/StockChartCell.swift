@@ -232,14 +232,14 @@ class StockChartCell: UITableViewCell {
                 if prevView == nil {
                     priceView.snp.makeConstraints { make in
                         make.left.equalTo(self.lowerArea)
-                        make.top.equalTo(self.lowerArea).priority(.low)
-                        make.bottom.equalTo(self.lowerArea).priority(.low)
+                        make.top.equalTo(self.lowerArea)
+                        make.bottom.equalTo(self.lowerArea)
                     }
                 } else if let prevView = prevView {
                     priceView.snp.makeConstraints { make in
                         make.left.equalTo(prevView.snp.right)
-                        make.top.equalTo(self.lowerArea).priority(.low)
-                        make.bottom.equalTo(self.lowerArea).priority(.low)
+                        make.top.equalTo(self.lowerArea)
+                        make.bottom.equalTo(self.lowerArea)
                         make.width.equalTo(prevView.snp.width)
                     }
                 }
